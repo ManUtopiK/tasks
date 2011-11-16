@@ -16,6 +16,12 @@ $english = array(
 	'tasks:friends' => "Friends' tasks",
 	'tasks:all' => "All site tasks",
 	'tasks:add' => "Add task",
+	
+	'tasks:lists' => "Task lists",
+	'tasks:lists:owner' => "%s's task lists",
+	'tasks:lists:friends' => "Friends' task lists",
+	'tasks:lists:all' => "All site task lists",
+	'tasks:lists:add' => "Add task list",
 
 	'tasks:group' => "Group tasks",
 	'groups:enabletasks' => 'Enable group tasks',
@@ -23,6 +29,10 @@ $english = array(
 	'tasks:edit' => "Edit this task",
 	'tasks:delete' => "Delete this task",
 	'tasks:view' => "View task",
+	
+	'tasks:lists:edit' => "Edit this task list",
+	'tasks:lists:delete' => "Delete this task list",
+	'tasks:lists:view' => "View task list",
 
 	'tasks:via' => "via tasks",
 	'item:object:tasklist' => 'Task lists',
@@ -62,6 +72,14 @@ $english = array(
 	'tasks:delete:success' => 'The task was successfully deleted.',
 	'tasks:delete:failure' => 'The task could not be deleted.',
 
+	'tasks:lists:noaccess' => 'No access to task list',
+	'tasks:lists:cantedit' => 'You cannot edit this task list',
+	'tasks:lists:saved' => 'Task list saved',
+	'tasks:lists:notsaved' => 'Task list could not be saved',
+	'tasks:lists:error:no_title' => 'You must specify a title for this task list.',
+	'tasks:lists:delete:success' => 'The task list was successfully deleted.',
+	'tasks:lists:delete:failure' => 'The task list could not be deleted.',
+	
 	/**
 	 * Task
 	 */
@@ -79,6 +97,9 @@ $english = array(
 	 */
 	'tasks:label:view' => "View task",
 	'tasks:label:edit' => "Edit task",
+	
+	'tasks:lists:label:view' => "View task list",
+	'tasks:lists:label:edit' => "Edit task list",
 	
 	/**
 	 * Sidebar items

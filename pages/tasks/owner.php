@@ -7,13 +7,13 @@
 
 $owner = elgg_get_page_owner_entity();
 if (!$owner) {
-
+	forward();
 }
 
 // access check for closed groups
 group_gatekeeper();
 
-$title = elgg_echo('tasks:owner', array($owner->name));
+$title = elgg_echo('tasks:lists:owner', array($owner->name));
 
 elgg_push_breadcrumb($owner->name);
 
