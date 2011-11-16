@@ -58,8 +58,14 @@ $english = array(
 
 	'tasks:title' => 'Task title',
 	'tasks:description' => 'Task text',
+	'tasks:list' => 'List',
+	'tasks:priority' => 'Priority',
 	'tasks:tags' => 'Tags',
+	'tasks:elapsed_time' => 'Elapsed time',
+	'tasks:remaining_time' => 'Remaining time (time to finish the task)',
 	'tasks:access_id' => 'Who can see this task?',
+	
+	
 
 	/**
 	 * Status and error messages

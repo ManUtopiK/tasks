@@ -55,9 +55,21 @@ function tasks_init() {
 	elgg_set_config('tasks', array(
 		'title' => 'text',
 		'description' => 'longtext',
+		'list' => 'tasks/list',
+		'priority' => 'tasks/priority',
+		'tags' => 'tags',
+		'elapsed_time' => 'text',
+		'remaining_time' => 'text',
+		'access_id' => 'access',
+	));
+	
+	elgg_set_config('tasklists', array(
+		'title' => 'text',
+		'description' => 'longtext',
+		'start_date' => 'date',
+		'deadline' => 'date',
 		'tags' => 'tags',
 		'access_id' => 'access',
-		'write_access_id' => 'write_access',
 	));
 
 	elgg_register_plugin_hook_handler('register', 'menu:owner_block', 'tasks_owner_block_menu');
@@ -113,11 +125,19 @@ function tasks_page_handler($page) {
 			break;
 		case 'add':
 			set_input('guid', $page[1]);
-			include "$base_dir/new.php";
+			include "$base_dir/new_task.php";
+			break;
+		case 'addlist':
+			set_input('guid', $page[1]);
+			include "$base_dir/new_tasklist.php";
 			break;
 		case 'edit':
 			set_input('guid', $page[1]);
-			include "$base_dir/edit.php";
+			include "$base_dir/edit_task.php";
+			break;
+		case 'editlist':
+			set_input('guid', $page[1]);
+			include("$base_dir/edit_tasklist.php");
 			break;
 		case 'group':
 			include "$base_dir/owner.php";
