@@ -169,16 +169,18 @@ function tasks_url($entity) {
  */
 function tasks_icon_url_override($hook, $type, $returnvalue, $params) {
 	$entity = $params['entity'];
-	if (elgg_instanceof($entity, 'object', 'tasklist') ||
-		elgg_instanceof($entity, 'object', 'task')) {
-		switch ($params['size']) {
-			case 'small':
-				return 'mod/tasks/images/tasks.gif';
-				break;
-			case 'medium':
-				return 'mod/tasks/images/tasks_lrg.gif';
-				break;
+	$size = $params['size'];
+	if (elgg_instanceof($entity, 'object', 'task')) {
+		$status = $entity->status;
+		if($status == 'unassigned' || $status == 'reopened') {
+			$status = 'new';
 		}
+		if (in_array($size, array('tiny', 'small', 'medium', 'large')) &&
+			in_array($status, array('active', 'assigned', 'closed', 'done', 'new'))){
+			return "mod/tasks/graphics/task-icons/$status-$size.png";
+		}
+	} elseif (elgg_instanceof($entity, 'object', 'tasklist')) {
+		
 	}
 }
 
@@ -223,13 +225,32 @@ function tasks_entity_menu_setup($hook, $type, $return, $params) {
 			}
 		}
 	}
-
+	
+	if ($entity->status == 'active') {
+		$options = array(
+			'name' => 'active',
+			'text' => elgg_echo('tasks:active'),
+			'href' => false,
+			'priority' => 150,
+		);
+		$return[] = ElggMenuItem::factory($options);
+	}
+	
+	$priorities = array(
+		'1' => 'low',
+		'2' => 'normal',
+		'3' => 'high',
+	);
+	
+	$priority = $priorities[$entity->priority];
+	
 	$options = array(
-		'name' => 'history',
-		'text' => elgg_echo('tasks:history'),
-		'href' => "tasks/history/$entity->guid",
+		'name' => 'priority',
+		'text' => elgg_echo("tasks:priority:$priority"),
+		'href' => false,
 		'priority' => 150,
 	);
+	
 	$return[] = ElggMenuItem::factory($options);
 
 	return $return;

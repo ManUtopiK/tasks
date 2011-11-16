@@ -40,6 +40,10 @@ $english = array(
 	'tasks:nogroup' => 'This group does not have any tasks yet',
 	'tasks:more' => 'More tasks',
 	'tasks:none' => 'No tasks created yet',
+	
+	'tasks:priority:low' => 'Low priority',
+	'tasks:priority:normal' => 'Normal priority',
+	'tasks:priority:high' => 'High prioritiy',
 
 	/**
 	* River
@@ -89,7 +93,13 @@ $english = array(
 	/**
 	 * Task
 	 */
-	'tasks:strapline' => 'Last updated %s by %s',
+	'tasks:strapline:new' => 'Reported %s by %s',
+	'tasks:strapline:assigned' => 'Assigned %s to %s',
+	'tasks:strapline:unassigned' => 'Unassigned %s to %s',
+	'tasks:strapline:active' => 'Assigned %s to %s',
+	'tasks:strapline:done' => 'Done %s by %s',
+	'tasks:strapline:closed' => 'Closed %s by %s',
+	'tasks:strapline:reopened' => 'Reopened %s by %s',
 
 	/**
 	 * Widget

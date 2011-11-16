@@ -21,7 +21,7 @@ elgg_register_title_button();
 
 $content = elgg_list_entities(array(
 	'types' => 'object',
-	'subtypes' => 'tasklist',
+	'subtypes' => 'task',
 	'container_guid' => elgg_get_page_owner_guid(),
 	'limit' => $limit,
 	'full_view' => false,

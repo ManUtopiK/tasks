@@ -25,7 +25,9 @@ elgg_set_page_owner_guid($page_owner->getGUID());
 $title = elgg_echo('tasks:add');
 elgg_push_breadcrumb($title);
 
-$vars = array();
+$vars = array(
+	'container_guid' => $container_guid,
+);
 $content = elgg_view_form('tasks/edit', array(), $vars);
 
 $body = elgg_view_layout('content', array(
