@@ -26,7 +26,15 @@ elgg_push_breadcrumb(elgg_echo('edit'));
 $title = elgg_echo("tasks:edit");
 
 if ($task->canEdit()) {
-	$vars = array();
+	$vars = array(
+		'guid' => $task_guid,
+		'container_guid' => $container_guid,
+	);
+	
+	foreach(array_keys(elgg_get_config('tasks')) as $variable){
+		$vars[$variable] = $task->$variable;
+	}
+	
 	$content = elgg_view_form('tasks/edit', array(), $vars);
 } else {
 	$content = elgg_echo("tasks:noaccess");
