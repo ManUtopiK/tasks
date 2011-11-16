@@ -60,8 +60,8 @@ $english = array(
 	 * Form fields
 	 */
 
-	'tasks:title' => 'Task title',
-	'tasks:description' => 'Task text',
+	'tasks:title' => 'Name',
+	'tasks:description' => 'Description',
 	'tasks:list' => 'List',
 	'tasks:priority' => 'Priority',
 	'tasks:tags' => 'Tags',
@@ -69,7 +69,12 @@ $english = array(
 	'tasks:remaining_time' => 'Remaining time (time to finish the task)',
 	'tasks:access_id' => 'Who can see this task?',
 	
-	
+	'tasks:lists:title' => 'Name',
+	'tasks:lists:description' => 'Description',
+	'tasks:lists:startdate' => 'Start date',
+	'tasks:lists:enddate' => 'End date (deadline)',
+	'tasks:lists:tags' => 'Tags',
+	'tasks:lists:access_id' => 'Who can see this task list?',
 
 	/**
 	 * Status and error messages
@@ -100,6 +105,17 @@ $english = array(
 	'tasks:strapline:done' => 'Done %s by %s',
 	'tasks:strapline:closed' => 'Closed %s by %s',
 	'tasks:strapline:reopened' => 'Reopened %s by %s',
+	
+	/**
+	 * Task list
+	 */
+	'tasks:lists:strapline' => 'Created %s by %s',
+	'tasks:lists:deadline' => 'Deadline in %s',
+	
+	'tasks:lists:graph:total' => '%s tasks',
+	'tasks:lists:graph:remaining' => '%s remaining',
+	'tasks:lists:graph:assigned' => '%s assigned',
+	'tasks:lists:graph:active' => '%s active',
 
 	/**
 	 * Widget

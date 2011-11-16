@@ -10,7 +10,7 @@ gatekeeper();
 $container_guid = (int) get_input('guid');
 $container = get_entity($container_guid);
 if (!$container) {
-
+	$container = elgg_get_logged_in_user_entity();
 }
 
 $parent_guid = 0;

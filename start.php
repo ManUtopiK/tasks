@@ -30,6 +30,9 @@ function tasks_init() {
 	$action_base = elgg_get_plugins_path() . 'tasks/actions/tasks';
 	elgg_register_action("tasks/edit", "$action_base/edit.php");
 	elgg_register_action("tasks/delete", "$action_base/delete.php");
+	$action_base = elgg_get_plugins_path() . 'tasks/actions/tasklists';
+	elgg_register_action("tasklists/edit", "$action_base/edit.php");
+	elgg_register_action("tasklists/delete", "$action_base/delete.php");
 
 	// Extend the main css view
 	elgg_extend_view('css/elgg', 'tasks/css');
@@ -66,8 +69,8 @@ function tasks_init() {
 	elgg_set_config('tasklists', array(
 		'title' => 'text',
 		'description' => 'longtext',
-		'start_date' => 'date',
-		'deadline' => 'date',
+		'startdate' => 'date',
+		'enddate' => 'date',
 		'tags' => 'tags',
 		'access_id' => 'access',
 	));
@@ -180,7 +183,10 @@ function tasks_icon_url_override($hook, $type, $returnvalue, $params) {
 			return "mod/tasks/graphics/task-icons/$status-$size.png";
 		}
 	} elseif (elgg_instanceof($entity, 'object', 'tasklist')) {
-		
+		if (!in_array($size, array('tiny', 'small', 'medium', 'large'))) {
+			$size = 'medium';
+		}
+		return "mod/tasks/graphics/tasklist-icons/tasklist-$size.png";
 	}
 }
 
@@ -226,32 +232,38 @@ function tasks_entity_menu_setup($hook, $type, $return, $params) {
 		}
 	}
 	
-	if ($entity->status == 'active') {
+	if ($entity->getSubtype() == 'task') {
+	
+		if ($entity->status == 'active') {
+			$options = array(
+				'name' => 'active',
+				'text' => elgg_echo('tasks:active'),
+				'href' => false,
+				'priority' => 150,
+			);
+			$return[] = ElggMenuItem::factory($options);
+		}
+		
+		$priorities = array(
+			'1' => 'low',
+			'2' => 'normal',
+			'3' => 'high',
+		);
+		
+		$priority = $priorities[$entity->priority];
+		
 		$options = array(
-			'name' => 'active',
-			'text' => elgg_echo('tasks:active'),
+			'name' => 'priority',
+			'text' => elgg_echo("tasks:priority:$priority"),
 			'href' => false,
 			'priority' => 150,
 		);
+		
 		$return[] = ElggMenuItem::factory($options);
+		
+	} elseif ($entity->getSubtype() == 'tasklist') {
+		
 	}
-	
-	$priorities = array(
-		'1' => 'low',
-		'2' => 'normal',
-		'3' => 'high',
-	);
-	
-	$priority = $priorities[$entity->priority];
-	
-	$options = array(
-		'name' => 'priority',
-		'text' => elgg_echo("tasks:priority:$priority"),
-		'href' => false,
-		'priority' => 150,
-	);
-	
-	$return[] = ElggMenuItem::factory($options);
 
 	return $return;
 }
