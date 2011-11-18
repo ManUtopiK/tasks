@@ -69,6 +69,20 @@ $english = array(
 	'tasks:remaining_time' => 'Remaining time (time to finish the task)',
 	'tasks:access_id' => 'Who can see this task?',
 	
+	'tasks:changehistory' => 'Change history',
+	'tasks:comments:post' => 'Save changes',
+	
+	'tasks:state:actions' => 'Actions',
+	'tasks:state:action:noaction' => 'Leave as <em>%s</em>',
+	'tasks:state:action:assign' => 'Accept this task',
+	'tasks:state:action:leave' => 'Leave this task',
+	'tasks:state:action:activate' => 'Set as your active task',
+	'tasks:state:action:deactivate' => 'Unset as your active task',
+	'tasks:state:action:assign_and_activate' => 'Accept this task and set as your active one',
+	'tasks:state:action:mark_as_done' => 'Mark this task as done',
+	'tasks:state:action:close' => 'Close this task',
+	'tasks:state:action:reopen' => 'Reopen this task',
+	
 	'tasks:lists:title' => 'Name',
 	'tasks:lists:description' => 'Description',
 	'tasks:lists:startdate' => 'Start date',

@@ -7,3 +7,7 @@
 .tasklist-graph div{
 	background: #4690D6;
 }
+
+.elgg-input-radios label {
+	font-weight: normal;
+}

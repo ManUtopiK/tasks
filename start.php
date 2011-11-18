@@ -30,6 +30,7 @@ function tasks_init() {
 	$action_base = elgg_get_plugins_path() . 'tasks/actions/tasks';
 	elgg_register_action("tasks/edit", "$action_base/edit.php");
 	elgg_register_action("tasks/delete", "$action_base/delete.php");
+	elgg_register_action("tasks/comments/add", "$action_base/comments/add.php");
 	$action_base = elgg_get_plugins_path() . 'tasks/actions/tasklists';
 	elgg_register_action("tasklists/edit", "$action_base/edit.php");
 	elgg_register_action("tasklists/delete", "$action_base/delete.php");
@@ -40,6 +41,9 @@ function tasks_init() {
 	// Register entity type for search
 	elgg_register_entity_type('object', 'task');
 	elgg_register_entity_type('object', 'tasklist');
+	
+	// Register a different form for annotations
+	elgg_register_plugin_hook_handler('comments', 'object', 'tasks_comments_hook');
 
 	// Register granular notification for this type
 	register_notification_object('object', 'task', elgg_echo('tasks:new'));
@@ -266,6 +270,13 @@ function tasks_entity_menu_setup($hook, $type, $return, $params) {
 	}
 
 	return $return;
+}
+
+function tasks_comments_hook($hook, $entity_type, $returnvalue, $params) {
+	if($params['entity']->getSubtype() == 'task') {
+		return elgg_view('tasks/page/elements/comments', $params);
+	}
+	return $returnvalue;
 }
 
 /**
