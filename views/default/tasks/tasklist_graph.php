@@ -2,37 +2,40 @@
 
 elgg_load_library('elgg:tasks');
 
+
 $total = tasks_get_entities(array(
-	'list_guid' => $vars['entity']->guid,
+	'container_guid' => $vars['entity']->guid,
 	'count' => true,
 ));
-
 $closed = tasks_get_entities(array(
-	'list_guid' => $vars['entity']->guid,
-	'status' => 'closed',
+	'container_guid' => $vars['entity']->guid,
+	'metadata_name' => 'status',
+	'metadata_value' => 'closed',
 	'count' => true,
 ));
-
 // Closed tasks aren't contabilized in graph.
 $total -= $closed;
 
 $done = tasks_get_entities(array(
-	'list_guid' => $vars['entity']->guid,
-	'status' => 'done',
+	'container_guid' => $vars['entity']->guid,
+	'metadata_name' => 'status',
+	'metadata_value' => 'done',
 	'count' => true,
 ));
 
 $remaining = $total - $done;
 
 $assigned = tasks_get_entities(array(
-	'list_guid' => $vars['entity']->guid,
-	'status' => array('assigned', 'active'),
+	'container_guid' => $vars['entity']->guid,
+	'metadata_name' => 'status',
+	'metadata_value' => array('assigned', 'active'),
 	'count' => true,
 ));
 
 $active = tasks_get_entities(array(
-	'list_guid' => $vars['entity']->guid,
-	'status' => 'active',
+	'container_guid' => $vars['entity']->guid,
+	'metadata_name' => 'status',
+	'metadata_value' => 'active',
 	'count' => true,
 ));
 

@@ -22,12 +22,11 @@ if (elgg_instanceof($container, 'object')) {
 
 elgg_set_page_owner_guid($page_owner->getGUID());
 
+elgg_push_breadcrumb($container->title);
 $title = elgg_echo('tasks:add');
 elgg_push_breadcrumb($title);
 
-$vars = array(
-	'container_guid' => $container_guid,
-);
+$vars = task_prepare_form_vars(null, $container_guid);
 $content = elgg_view_form('tasks/edit', array(), $vars);
 
 $body = elgg_view_layout('content', array(

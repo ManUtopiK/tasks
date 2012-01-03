@@ -24,7 +24,7 @@ $title = $task->title;
 if (elgg_instanceof($container, 'group')) {
 	elgg_push_breadcrumb($container->name, "tasks/group/$container->guid/all");
 } else {
-	elgg_push_breadcrumb($container->name, "tasks/owner/$container->username");
+	elgg_push_breadcrumb($container->title, "tasks/view/$container->guid/$container->title");
 }
 elgg_push_breadcrumb($title);
 
@@ -32,7 +32,7 @@ $content = elgg_view_entity($task, array('full_view' => true));
 $content .= elgg_view_comments($task);
 
 if (elgg_get_logged_in_user_guid() == $task->getOwnerGuid()) {
-	$url = "tasks/add/$task->guid";
+	$url = "tasks/addtask/$task->guid";
 	elgg_register_menu_item('title', array(
 			'name' => 'subtask',
 			'href' => $url,

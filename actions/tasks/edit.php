@@ -16,11 +16,11 @@ foreach ($variables as $name => $type) {
 		$input[$name] = string_to_tag_array($input[$name]);
 	}
 }
-
+elgg_dump($input);
 // Get guids
 $task_guid = (int)get_input('task_guid');
 $container_guid = (int)get_input('container_guid');
-$parent_guid = (int)get_input('list_guid');
+$list_guid = (int)get_input('list_guid');
 
 elgg_make_sticky_form('task');
 
@@ -54,7 +54,7 @@ if (sizeof($input) > 0) {
 $task->container_guid = $container_guid;
 
 if ($list_guid) {
-	$task->list_guid = $list_guid;
+	$task->container_guid = $list_guid;
 }
 
 if ($task->save()) {
