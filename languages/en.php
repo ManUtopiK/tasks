@@ -84,6 +84,10 @@ $english = array(
 	'tasks:state:action:close' => 'Close this task',
 	'tasks:state:action:reopen' => 'Reopen this task',
 	
+	'tasks:assigned' => 'Assigned tasks',
+	'tasks:unassigned' => 'Unassigned tasks',
+	'tasks:closed' => 'Closed tasks',
+	
 	'tasks:lists:title' => 'Name',
 	'tasks:lists:description' => 'Description',
 	'tasks:lists:startdate' => 'Start date',

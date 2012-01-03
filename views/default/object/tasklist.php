@@ -72,10 +72,47 @@ if ($full) {
 	));
 
 	$info = elgg_view_image_block($icon, $list_body);
+	
+	
+	$assigned_tasks = elgg_list_entities_from_metadata(array(
+		'container_guid' => $tasklist->guid,
+		'metadata_name' => 'status',
+		'metadata_values' => array('assigned', 'active'),
+		'full_view' => false,
+	));
+	if($assigned_tasks) {
+		$assigned_tasks = elgg_view_module('info', elgg_echo('tasks:assigned'), $assigned_tasks);
+	}
+	
+	$unassigned_tasks = elgg_list_entities_from_metadata(array(
+		'container_guid' => $tasklist->guid,
+		'metadata_name' => 'status',
+		'metadata_values' => array('new', 'unassigned', 'reopened'),
+		'full_view' => false,
+	));
+	if($unassigned_tasks) {
+		$unassigned_tasks = elgg_view_module('info', elgg_echo('tasks:unassigned'), $unassigned_tasks);
+	}
+	
+	$closed_tasks = elgg_list_entities_from_metadata(array(
+		'container_guid' => $tasklist->guid,
+		'metadata_name' => 'status',
+		'metadata_values' => array('done', 'closed'),
+		'full_view' => false,
+	));
+	if($closed_tasks) {
+		$closed_tasks = elgg_view_module('info', elgg_echo('tasks:closed'),	$closed_tasks);
+	}
+		
 
 	echo <<<HTML
 $info
 $body
+<div class="mtl">
+$assigned_tasks
+$unassigned_tasks
+$closed_tasks
+</div>
 HTML;
 
 } else {
