@@ -15,13 +15,13 @@ $english = array(
 	'tasks:owner' => "%s's tasks",
 	'tasks:friends' => "Friends' tasks",
 	'tasks:all' => "All site tasks",
-	'tasks:add' => "Add task",
+	'tasks:add' => "Add task list",
+	'tasks:addtask' => "Add task",
 	
 	'tasks:lists' => "Task lists",
 	'tasks:lists:owner' => "%s's task lists",
 	'tasks:lists:friends' => "Friends' task lists",
 	'tasks:lists:all' => "All site task lists",
-	'tasks:lists:add' => "Add task list",
 
 	'tasks:group' => "Group tasks",
 	'groups:enabletasks' => 'Enable group tasks',
@@ -40,6 +40,7 @@ $english = array(
 	'tasks:nogroup' => 'This group does not have any tasks yet',
 	'tasks:more' => 'More tasks',
 	'tasks:none' => 'No tasks created yet',
+	'tasks:lists:none' => 'No task list created yet',
 	
 	'tasks:priority:low' => 'Low priority',
 	'tasks:priority:normal' => 'Normal priority',

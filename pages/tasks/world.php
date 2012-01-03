@@ -18,7 +18,7 @@ $content = elgg_list_entities(array(
 	'full_view' => false,
 ));
 if (!$content) {
-	$content = '<p>' . elgg_echo('tasks:none') . '</p>';
+	$content = '<p>' . elgg_echo('tasks:lists:none') . '</p>';
 }
 
 $body = elgg_view_layout('content', array(

@@ -2,6 +2,19 @@
 
 elgg_load_library('elgg:tasks');
 
+
+$ee = elgg_get_entities(array(
+	'list_guid' => $vars['entity']->guid,
+	'type' => 'object',
+		'subtype' => 'task',
+	));
+foreach ($ee as $e) {
+	//delete_entity($e->guid);
+	$aa[] = $e->status;
+}
+
+global $fb; $fb->info($aa);
+	
 $total = tasks_get_entities(array(
 	'list_guid' => $vars['entity']->guid,
 	'count' => true,
@@ -12,7 +25,7 @@ $closed = tasks_get_entities(array(
 	'status' => 'closed',
 	'count' => true,
 ));
-
+$fb->info($closed);
 // Closed tasks aren't contabilized in graph.
 $total -= $closed;
 

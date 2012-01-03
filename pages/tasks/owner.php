@@ -21,13 +21,13 @@ elgg_register_title_button();
 
 $content = elgg_list_entities(array(
 	'types' => 'object',
-	'subtypes' => 'task',
+	'subtypes' => 'tasklist',
 	'container_guid' => elgg_get_page_owner_guid(),
 	'limit' => $limit,
 	'full_view' => false,
 ));
 if (!$content) {
-	$content = '<p>' . elgg_echo('tasks:none') . '</p>';
+	$content = '<p>' . elgg_echo('tasks:lists:none') . '</p>';
 }
 
 $filter_context = '';

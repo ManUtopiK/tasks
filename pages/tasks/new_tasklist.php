@@ -10,7 +10,7 @@ gatekeeper();
 $container_guid = (int) get_input('guid');
 $container = get_entity($container_guid);
 if (!$container) {
-	$container = elgg_get_logged_in_user_entity();
+	//$container = elgg_get_page_owner_entity();//elgg_get_logged_in_user_entity();
 }
 
 $parent_guid = 0;
@@ -25,7 +25,7 @@ elgg_set_page_owner_guid($page_owner->getGUID());
 $title = elgg_echo('tasks:lists:add');
 elgg_push_breadcrumb($title);
 
-$vars = array();
+$vars = tasklist_prepare_form_vars(null, $parent_guid);
 $content = elgg_view_form('tasklists/edit', array(), $vars);
 
 $body = elgg_view_layout('content', array(
