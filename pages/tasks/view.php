@@ -11,20 +11,30 @@ if (!$task) {
 	forward();
 }
 
-elgg_set_page_owner_guid($task->getContainerGUID());
+$container = get_entity($task->getContainerGUID());
+
+if(!elgg_instanceof($container, 'user') || !elgg_instanceof($container, 'group')) {
+	$list = $container;
+	$container = get_entity($list->getContainerGUID());
+}
+
+elgg_set_page_owner_guid($container);
 
 group_gatekeeper();
 
-$container = elgg_get_page_owner_entity();
+
 if (!$container) {
 }
 
 $title = $task->title;
 
-if (elgg_instanceof($container, 'group')) {
+if (elgg_instanceof($container, 'user')) {
+	elgg_push_breadcrumb($container->name, "tasks/owner/$container->guid/");
+} elseif (elgg_instanceof($container, 'group')) {
 	elgg_push_breadcrumb($container->name, "tasks/group/$container->guid/all");
-} else {
-	elgg_push_breadcrumb($container->title, "tasks/view/$container->guid/$container->title");
+}
+if($list) {
+	elgg_push_breadcrumb($list->title, "tasks/view/$list->guid/$list->title");
 }
 elgg_push_breadcrumb($title);
 

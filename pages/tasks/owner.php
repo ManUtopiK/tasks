@@ -2,12 +2,12 @@
 /**
  * List a user's or group's tasks
  *
- * @package Elggtasks
+ * @package ElggTasks
  */
 
 $owner = elgg_get_page_owner_entity();
 if (!$owner) {
-	forward();
+	forward('tasks/all');
 }
 
 // access check for closed groups
