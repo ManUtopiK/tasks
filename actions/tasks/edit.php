@@ -54,7 +54,7 @@ if (sizeof($input) > 0) {
 $task->container_guid = $container_guid;
 
 if ($list_guid) {
-	$task->list_guid = $list_guid;
+	$task->container_guid = $list_guid;
 }
 
 if ($task->save()) {

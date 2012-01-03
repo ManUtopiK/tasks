@@ -95,8 +95,7 @@ function tasks_get_entities($options) {
 	);
 	
 	$options = array_merge($default, $options);
-
-	return elgg_get_entities($options);
+	return elgg_get_entities_from_metadata($options);
 }
 
 function tasks_get_actions_from_state($state){
