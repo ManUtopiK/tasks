@@ -5,13 +5,13 @@
  * @package ElggTasks
  */
 
-$task_guid = get_input('guid');
-$task = get_entity($task_guid);
-if (!$task) {
+$guid = get_input('guid');
+$entity = get_entity($guid);
+if (!$entity) {
 	forward();
 }
 
-$container = $task->getContainerEntity();
+$container = $entity->getContainerEntity();
 
 if(!elgg_instanceof($container, 'user') && !elgg_instanceof($container, 'group')) {
 	$list = $container;
@@ -26,7 +26,7 @@ group_gatekeeper();
 if (!$container) {
 }
 
-$title = $task->title;
+$title = $entity->title;
 
 if (elgg_instanceof($container, 'user')) {
 	elgg_push_breadcrumb($container->name, "tasks/owner/$container->guid/");
@@ -38,11 +38,11 @@ if($list) {
 }
 elgg_push_breadcrumb($title);
 
-$content = elgg_view_entity($task, array('full_view' => true));
-$content .= elgg_view_comments($task);
+$content = elgg_view_entity($entity, array('full_view' => true));
+$content .= elgg_view_comments($entity);
 
-if (elgg_get_logged_in_user_guid() == $task->getOwnerGuid()) {
-	$url = "tasks/addtask/$task->guid";
+if (!$list && $entity->canEdit()) {
+	$url = "tasks/addtask/$entiy->guid";
 	elgg_register_menu_item('title', array(
 			'name' => 'subtask',
 			'href' => $url,
