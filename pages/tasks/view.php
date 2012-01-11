@@ -11,14 +11,14 @@ if (!$task) {
 	forward();
 }
 
-$container = get_entity($task->getContainerGUID());
+$container = $task->getContainerEntity();
 
-if(!elgg_instanceof($container, 'user') || !elgg_instanceof($container, 'group')) {
+if(!elgg_instanceof($container, 'user') && !elgg_instanceof($container, 'group')) {
 	$list = $container;
-	$container = get_entity($list->getContainerGUID());
+	$container = $list->getContainerEntity();
 }
 
-elgg_set_page_owner_guid($container);
+elgg_set_page_owner_guid($container->guid);
 
 group_gatekeeper();
 

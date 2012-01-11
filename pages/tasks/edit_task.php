@@ -18,8 +18,21 @@ if (!$container) {
 	
 }
 
+if(!elgg_instanceof($container, 'user') && !elgg_instanceof($container, 'group')) {
+	$list = $container;
+	$container = $list->getContainerEntity();
+}
+
 elgg_set_page_owner_guid($container->getGUID());
 
+if (elgg_instanceof($container, 'user')) {
+	elgg_push_breadcrumb($container->name, "tasks/owner/$container->guid/");
+} elseif (elgg_instanceof($container, 'group')) {
+	elgg_push_breadcrumb($container->name, "tasks/group/$container->guid/all");
+}
+if($list) {
+	elgg_push_breadcrumb($list->title, "tasks/view/$list->guid/$list->title");
+}
 elgg_push_breadcrumb($task->title, $task->getURL());
 elgg_push_breadcrumb(elgg_echo('edit'));
 
