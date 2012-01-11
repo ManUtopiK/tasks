@@ -79,6 +79,8 @@ if ($full) {
 		'metadata_name' => 'status',
 		'metadata_values' => array('assigned', 'active'),
 		'full_view' => false,
+		'offset' => (int) get_input('assigned_offset'),
+		'offset_key' => 'assigned_offset',
 	));
 	if($assigned_tasks) {
 		$assigned_tasks = elgg_view_module('info', elgg_echo('tasks:assigned'), $assigned_tasks);
@@ -89,6 +91,8 @@ if ($full) {
 		'metadata_name' => 'status',
 		'metadata_values' => array('new', 'unassigned', 'reopened'),
 		'full_view' => false,
+		'offset' => (int) get_input('unassigned_offset'),
+		'offset_key' => 'unassigned_offset',
 	));
 	if($unassigned_tasks) {
 		$unassigned_tasks = elgg_view_module('info', elgg_echo('tasks:unassigned'), $unassigned_tasks);
@@ -99,6 +103,8 @@ if ($full) {
 		'metadata_name' => 'status',
 		'metadata_values' => array('done', 'closed'),
 		'full_view' => false,
+		'offset' => (int) get_input('closed_offset'),
+		'offset_key' => 'closed_offset',
 	));
 	if($closed_tasks) {
 		$closed_tasks = elgg_view_module('info', elgg_echo('tasks:closed'),	$closed_tasks);
