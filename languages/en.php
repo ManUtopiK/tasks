@@ -135,6 +135,18 @@ $english = array(
 	'tasks:lists:graph:remaining' => '%s remaining',
 	'tasks:lists:graph:assigned' => '%s assigned',
 	'tasks:lists:graph:active' => '%s active',
+	
+	/**
+	 * Change history
+	 */
+
+	'tasks:history:assign' => "assgined herself this task",
+	'tasks:history:activate' => "set this as her active task",
+	'tasks:history:deactivate' => "unset this as her active task",
+	'tasks:history:mark_as_done' => "set this task as done",
+	'tasks:history:reopen' => "reopened this task",
+	'tasks:history:leave' => "left to do this task",
+	'tasks:history:close' => "closed this task (won't do)",
 
 	/**
 	 * Widget

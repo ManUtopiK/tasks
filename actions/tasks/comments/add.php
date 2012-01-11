@@ -41,6 +41,13 @@ $new_state = tasks_get_state_from_action($state_action);
 if($new_state) {
 	$entity->status = $new_state;
 	$entity->time_status_changed = time();
+	
+	$annotation = create_annotation($entity->guid,
+								'task_state_changed',
+								$state_action,
+								"",
+								$user->guid,
+								$entity->access_id);
 }
 
 // notify if poster wasn't owner
