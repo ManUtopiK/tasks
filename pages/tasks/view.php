@@ -42,7 +42,7 @@ $content = elgg_view_entity($entity, array('full_view' => true));
 $content .= elgg_view_comments($entity);
 
 if (!$list && $entity->canEdit()) {
-	$url = "tasks/addtask/$entiy->guid";
+	$url = "tasks/addtask/$entity->guid";
 	elgg_register_menu_item('title', array(
 			'name' => 'subtask',
 			'href' => $url,
