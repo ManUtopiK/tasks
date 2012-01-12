@@ -132,11 +132,11 @@ function tasks_page_handler($page) {
 			break;
 		case 'add':
 			set_input('guid', $page[1]);
-			include "$base_dir/new_tasklist.php";
-			break;
-		case 'addtask':
-			set_input('guid', $page[1]);
 			include "$base_dir/new_task.php";
+			break;
+		case 'addlist':
+			set_input('guid', $page[1]);
+			include "$base_dir/new_tasklist.php";
 			break;
 		case 'edit':
 			set_input('guid', $page[1]);

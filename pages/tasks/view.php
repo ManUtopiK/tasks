@@ -29,7 +29,7 @@ if (!$container) {
 $title = $entity->title;
 
 if (elgg_instanceof($container, 'user')) {
-	elgg_push_breadcrumb($container->name, "tasks/owner/$container->guid/");
+	elgg_push_breadcrumb($container->name, "tasks/owner/$container->username/");
 } elseif (elgg_instanceof($container, 'group')) {
 	elgg_push_breadcrumb($container->name, "tasks/group/$container->guid/all");
 }
@@ -42,7 +42,7 @@ $content = elgg_view_entity($entity, array('full_view' => true));
 $content .= elgg_view_comments($entity);
 
 if (!$list && $entity->canEdit()) {
-	$url = "tasks/addtask/$entity->guid";
+	$url = "tasks/add/$entity->guid";
 	elgg_register_menu_item('title', array(
 			'name' => 'subtask',
 			'href' => $url,

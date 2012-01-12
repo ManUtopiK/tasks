@@ -15,8 +15,8 @@ $english = array(
 	'tasks:owner' => "%s's tasks",
 	'tasks:friends' => "Friends' tasks",
 	'tasks:all' => "All site tasks",
-	'tasks:add' => "Add task list",
-	'tasks:addtask' => "Add task",
+	'tasks:add' => "Add task",
+	'tasks:addlist' => "Add list",
 	
 	'tasks:lists' => "Task lists",
 	'tasks:lists:owner' => "%s's task lists",
@@ -30,6 +30,7 @@ $english = array(
 	'tasks:delete' => "Delete this task",
 	'tasks:view' => "View task",
 	
+	'tasks:lists:add' => "Add a task list",
 	'tasks:lists:edit' => "Edit this task list",
 	'tasks:lists:delete' => "Delete this task list",
 	'tasks:lists:view' => "View task list",

@@ -6,18 +6,19 @@
  */
 
 $owner = elgg_get_page_owner_entity();
-if (!$owner) {
-
+if (!elgg_instanceof($owner, 'user')) {
+	forward('tasks/all');
 }
+
+elgg_register_title_button('tasks', 'addlist');
+elgg_register_title_button('tasks', 'add');
 
 elgg_push_breadcrumb($owner->name, "tasks/owner/$owner->username");
 elgg_push_breadcrumb(elgg_echo('friends'));
 
-elgg_register_title_button();
-
 $title = elgg_echo('tasks:friends');
 
-$content = list_user_friends_objects($owner->guid, 'task_top', 10, false);
+$content = list_user_friends_objects($owner->guid, 'tasklist', 10, false);
 if (!$content) {
 	$content = elgg_echo('tasks:none');
 }

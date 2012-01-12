@@ -13,21 +13,37 @@ if (!$owner) {
 // access check for closed groups
 group_gatekeeper();
 
+$num_lists = elgg_get_entities(array(
+	'type' => 'object',
+	'subtype' => 'tasklist',
+	'container_guid' => $owner->guid,
+	'count' => true,
+));
+
+if ($num_lists == 1 && $list = get_entity($owner->tasklist_guid)) {
+	forward($list->getURL());
+}
+
 $title = elgg_echo('tasks:lists:owner', array($owner->name));
 
-elgg_push_breadcrumb($owner->name);
+if (elgg_instanceof($owner, 'user')) {
+	elgg_push_breadcrumb($owner->name);
+} else {
+	elgg_push_breadcrumb($owner->title);
+}
 
-elgg_register_title_button();
+elgg_register_title_button('tasks', 'addlist');
+elgg_register_title_button('tasks', 'add');
 
 $content = elgg_list_entities(array(
-	'types' => 'object',
+	'type' => 'object',
 	'subtypes' => 'tasklist',
 	'container_guid' => elgg_get_page_owner_guid(),
-	'limit' => $limit,
 	'full_view' => false,
 ));
+
 if (!$content) {
-	$content = '<p>' . elgg_echo('tasks:lists:none') . '</p>';
+	$content = '<p>' . elgg_echo('tasks:none') . '</p>';
 }
 
 $filter_context = '';

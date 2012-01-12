@@ -16,10 +16,9 @@ foreach ($variables as $name => $type) {
 		$input[$name] = string_to_tag_array($input[$name]);
 	}
 }
-elgg_dump($input);
+
 // Get guids
 $task_guid = (int)get_input('task_guid');
-$container_guid = (int)get_input('container_guid');
 $list_guid = (int)get_input('list_guid');
 
 elgg_make_sticky_form('task');
@@ -50,12 +49,24 @@ if (sizeof($input) > 0) {
 	}
 }
 
-// need to add check to make sure user can write to container
-$task->container_guid = $container_guid;
-
-if ($list_guid) {
-	$task->container_guid = $list_guid;
+if (!$list_guid) {
+	$user = elgg_get_logged_in_user_entity();
+	$list_guid = $user->tasklist_guid;
+	if (!get_entity($list_guid)) {
+		$list = new ElggObject();
+		$list->subtype = 'tasklist';
+		$list->title = elgg_echo('tasks:owner', array($user->name));
+		$list->container_guid = $user->getGUID();
+		$list->access_id = ACCESS_PRIVATE;
+		if(!$list->save()) {
+			register_error(elgg_echo('tasks:error:no_save'));
+			forward(REFERER);
+		}
+		$list_guid = $list->guid;
+		$user->tasklist_guid = $list_guid;
+	}
 }
+$task->container_guid = $list_guid;
 
 if ($task->save()) {
 
