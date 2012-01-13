@@ -153,6 +153,7 @@ $english = array(
 	 * Widget
 	 **/
 
+	'tasks:active' => "Active tasks",
 	'tasks:num' => 'Number of tasks to display',
 	'tasks:widget:description' => "This is a list of your tasks.",
 

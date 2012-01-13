@@ -55,7 +55,7 @@ function tasks_init() {
 	elgg_extend_view('groups/tool_latest', 'tasks/group_module');
 
 	//add a widget
-	elgg_register_widget_type('tasks', elgg_echo('tasks'), elgg_echo('tasks:widget:description'));
+	elgg_register_widget_type('tasks', elgg_echo('tasks:active'), elgg_echo('tasks:widget:description'));
 
 	// Language short codes must be of the form "tasks:key"
 	// where key is the array key below
