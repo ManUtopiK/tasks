@@ -1,0 +1,10 @@
+TODO:
+ * Add a task inline input
+ * Replace contanier_guid by parent_guid
+ * "input/tasklist"
+ * "Due in $friendlytime"
+ * Task tree in sidebar
+ * Active tasks management
+ * Actions menu in task icon
+
+ * Discuss an API (2.0)
