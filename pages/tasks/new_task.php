@@ -30,7 +30,7 @@ if (elgg_instanceof($container, 'user')) {
 $title = elgg_echo('tasks:add');
 elgg_push_breadcrumb($title);
 
-$vars = task_prepare_form_vars();
+$vars = task_prepare_form_vars(null, $container_guid);
 $content = elgg_view_form('tasks/edit', array(), $vars);
 
 $body = elgg_view_layout('content', array(
